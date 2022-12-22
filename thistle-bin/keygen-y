@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+#
+# This utility prints out the pivit certificate string to add to TRH's
+# configuration file's "public_key" field, if the YubiKey is already
+# provisioned.  If the YubiKey is not provisioned, or if the -f flag is present,
+# a new key pair is generated.
+#
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+readonly SCRIPT_DIR
+PROJECT_DIR="$(realpath "${SCRIPT_DIR}/..")"
+readonly PROJECT_DIR
+
+# yubisign is in a submodule
+yubisign="${PROJECT_DIR}/yubisign/thistle-bin/yubisign"
+readonly yubisign
+
+keygen() {
+  local force_keygen=false
+
+  while getopts ":hf" opt; do
+    case ${opt} in
+      h )
+        usage
+        exit 0 ;;
+      f )
+        force_keygen=true ;;
+      \? )
+        echo "Invalid optoin: $OPTARG"
+        exit 1 ;;
+      esac
+  done
+
+  shift $((OPTIND - 1))
+
+  if [[ "$#" != 0 ]]; then
+    usage
+    exit 1
+  fi
+
+  if "$force_keygen" || ! pivit --print &>/dev/null; then
+    eval "${yubisign} keygen"
+  fi
+
+  cert_str="$(pivit --print | \
+    awk '/^-----BEGIN CERTIFICATE-----/{x=1;next}/^-----END CERTIFICATE-----/{x=0}x' | \
+    tr -d '\n')"
+  echo
+  echo "Please add the following value to the public_keys array in TRH configuration:"
+  echo "pivit:${cert_str}"
+}
+
+usage() {
+  echo "Usage:"
+  echo "  $0 [-f]"
+  echo "    If YubiKey is already provisioned, prints out certificate string."
+  echo "    Otherwise, generates a new key pair in the YubiKey. When the -f flag"
+  echo "    is present, force generates a new key pair."
+}
+
+keygen "$@"

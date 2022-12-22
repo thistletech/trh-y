@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+#
+#
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+readonly SCRIPT_DIR
+PROJECT_DIR="$(realpath "${SCRIPT_DIR}/..")"
+readonly PROJECT_DIR
+
+# yubisign is in a submodule
+yubisign="${PROJECT_DIR}/yubisign/thistle-bin/yubisign"
+readonly yubisign
+
+sign() {
+  while getopts ":h" opt; do
+    case ${opt} in
+      h )
+        usage
+        exit 0 ;;
+      \? )
+        echo "Invalid optoin: $OPTARG"
+        exit 1 ;;
+      esac
+  done
+
+  shift $((OPTIND - 1))
+
+  if [[ "$#" != 1 ]]; then
+    usage
+    exit 1
+  fi
+
+  local signable="${1}"
+
+  local tmp_file
+  tmp_file="$(mktemp)"
+
+  echo -n "${signable}" > "${tmp_file}"
+  eval "${yubisign}" sign "${tmp_file}" | 
+    awk '/^-----BEGIN PKCS7-----/{x=1;next}/^-----END PKCS7-----/{x=0}x' | \
+    tr -d '\n'
+
+}
+
+usage() {
+  echo "Usage:"
+  echo "  $0 SIGNABLE_STRING"
+  echo "    Signs SIGNABLE_STRING using yubisign"
+}
+
+sign "$@"

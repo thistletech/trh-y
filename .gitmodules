@@ -1,0 +1,3 @@
+[submodule "yubisign"]
+	path = yubisign
+	url = https://github.com/thistletech/yubisign.git
