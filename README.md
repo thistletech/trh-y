@@ -255,7 +255,9 @@ trh-y🐚 $ tuc --log-level=info -c config.json
 
   ```text
   Usage:
-    thistle-bin/keygen-y [-f]
+    keygen-y -h
+      Display this help message
+    keygen-y [-f]
       If YubiKey is already provisioned, prints out certificate string.
       Otherwise, generates a new key pair in the YubiKey. When the -f flag
       is present, force generates a new key pair.
@@ -265,6 +267,8 @@ trh-y🐚 $ tuc --log-level=info -c config.json
 
   ```text
   Usage:
+    sign-y -h
+      Display this help message
     thistle-bin/sign-y SIGNABLE_STRING
       Signs SIGNABLE_STRING using yubisign
   ```

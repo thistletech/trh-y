@@ -53,7 +53,9 @@ keygen() {
 
 usage() {
   echo "Usage:"
-  echo "  $0 [-f]"
+  echo "  ${0##*/} -h"
+  echo "    Display this help message"
+  echo "  ${0##*/} [-f]"
   echo "    If YubiKey is already provisioned, prints out certificate string."
   echo "    Otherwise, generates a new key pair in the YubiKey. When the -f flag"
   echo "    is present, force generates a new key pair."

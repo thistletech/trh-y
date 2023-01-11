@@ -45,7 +45,9 @@ sign() {
 
 usage() {
   echo "Usage:"
-  echo "  $0 SIGNABLE_STRING"
+  echo "  ${0##*/} -h"
+  echo "    Display this help message"
+  echo "  ${0##*/} SIGNABLE_STRING"
   echo "    Signs SIGNABLE_STRING using yubisign"
 }
 
