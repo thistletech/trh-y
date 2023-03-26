@@ -124,7 +124,8 @@ $ git clone --recursive https://github.com/thistletech/trh-y.git
 # Activate Hermit, and run subsequent commands in Hermit environment
 $ . trh-y/bin/activate-hermit
 # Paste the "Access Token" of the project obtained from Thistle portal, and type
-# enter + ctrl-d
+# `enter + ctrl-d`. Use this command to prevent the sensitive $THISTLE_TOKEN
+# from being logged in bash history
 trh-y🐚 $ export THISTLE_TOKEN=$(cat)
 trh-y🐚 $ trh init --persist /path/to/device-persist-storage \
   --public-key <PUBLIC_KEY>
