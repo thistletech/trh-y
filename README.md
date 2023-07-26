@@ -93,9 +93,9 @@ This step only needs to be done once per release signing key.
 
    ![Create New Project](img/new_project.png "Create New Project")
 
-2. In the newly created project "yubikey signing", in the upper right corner,
-   click the button "Access Token" to obtain the API token to be used as
-   `THISTLE_TOKEN` in the initialization step.
+2. In the newly created project "yubikey signing", visit the "Settings" section
+   of a project to obtain the API token to be used as `THISTLE_TOKEN` in the
+   initialization step below.
 
    ![Obtain Access Token](img/access_token.png "Obtain Access Token")
 
@@ -215,7 +215,7 @@ trh-y🐚 $ export THISTLE_TOKEN=$(cat)
 # Prepare a local OTA bundle
 trh-y🐚 $ mkdir -p rel/tmp
 trh-y🐚 $ echo "This is a test" > rel/tmp/test.txt
-trh-y🐚 $ trh --external-sign "trh-y/thistle-bin/sign-y" prepare -t=./rel -f=/
+trh-y🐚 $ trh --external-sign "trh-y/thistle-bin/sign-y" prepare --target=./rel --file-base-path=/
 Read manifest at "./manifest.json"
 Processed file "./rel/tmp/test.txt"
 Executing external signing command
