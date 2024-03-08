@@ -1,7 +1,6 @@
 # trh-y: Thistle Release Helper with YubiKey Signing
 
-[![Shellcheck](https://github.com/thistletech/trh-y/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/thistletech/trh-y/actions/workflows/shellcheck.yml)
-[![Markdown Lint](https://github.com/thistletech/trh-y/actions/workflows/markdownlint.yml/badge.svg)](https://github.com/thistletech/trh-y/actions/workflows/markdownlint.yml)
+[![Sanity checks](https://github.com/thistletech/trh-y/actions/workflows/sanity.yml/badge.svg)](https://github.com/thistletech/trh-y/actions/workflows/sanity.yml)
 
 This repository contains the tools and instructions for releasing a Thistle OTA
 update bundle signed with a key protected by a YubiKey.
