@@ -128,4 +128,7 @@ sha256sums = {
   "https://downloads.thistle.tech/embedded-client/1.1.0/tuc-1.1.0-aarch64-unknown-linux-musl.gz": "e7b46ca5e5c3f678e8f14f66d507b36c2c106844d4d0f5066463aba9a911915d",
   "https://downloads.thistle.tech/embedded-client/1.2.1/tuc-1.2.1-aarch64-unknown-linux-musl.gz": "ef4cd7603e3c2c22c259f25fb5efac4c150d106a7b9e4c56157128984aebcd84",
   "https://downloads.thistle.tech/embedded-client/1.6.0/tuc-1.6.0-x86_64-apple-darwin.gz": "f466ab3b001c451e306a1090342f1a8ceb435eee62e48dbe9d1ccda2d5fd82d2",
+  "https://downloads.thistle.tech/embedded-client/1.6.1/tuc-1.6.1-x86_64-apple-darwin.gz": "c120d652883f0c377d9e8b498f99e7ad6480a67d571036846573b30a3981a39c",
+  "https://downloads.thistle.tech/embedded-client/1.6.1/tuc-1.6.1-aarch64-unknown-linux-musl.gz": "59dd218ddc097205d26bae3d8a866657a373574f53a99589c5a80894e0bfce31",
+  "https://downloads.thistle.tech/embedded-client/1.6.1/tuc-1.6.1-x86_64-unknown-linux-musl.gz": "83801688a09e65b851f64fa168cce14d115d286be85ae91e44cce5166a51d767",
 }
